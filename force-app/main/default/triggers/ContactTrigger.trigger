@@ -30,5 +30,8 @@ trigger UpdateNumberOfContacts on Contact (after insert, after update, after del
         Account acc = new Account(Id = accountId, Number_of_Contacts__c = accountContactCountMap.get(accountId));
         accountsToUpdate.add(acc);
     }
-    update accountsToUpdate;
+    if (!accountsToUpdate.isEmpty()) {
+        update accountsToUpdate;
+    }
+    
 }
