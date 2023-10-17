@@ -1,7 +1,7 @@
 trigger UpdateNumberOfContacts on Contact (after insert, after update, after delete, after undelete) {
     // Create a map to hold the count of contacts per account
     Map<Id, Integer> accountContactCountMap = new Map<Id, Integer>();
-
+   // by count method, it can also done by aggregate query
     if (Trigger.isInsert || Trigger.isUpdate || Trigger.isUndelete) {
         for (Contact con : Trigger.new) {
             if (con.AccountId != null) {
