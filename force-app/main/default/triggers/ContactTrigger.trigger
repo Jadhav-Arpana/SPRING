@@ -7,7 +7,7 @@ trigger UpdateNumberOfContacts on Contact (after insert, after update, after del
 
             if (con.AccountId != null) {
                 //In switch Account case updating old account count
-                if(oldMap.get(con.Id).AccountId != con.AccountId){
+                if(oldMap !=null && oldMap.get(con.Id).AccountId != con.AccountId){
                     accountContactCountMap.put(oldMap.get(con.Id).AccountId, accountContactCountMap.get(oldMap.get(con.Id).AccountId) - 1);
                 }
                 // to add count in new contact
